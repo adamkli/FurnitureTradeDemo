@@ -1,4 +1,4 @@
-﻿namespace FurnitureTradeDemo.Data
+﻿namespace FurnitureTradeDemo.Services
 {
     public enum DiscountType
     {

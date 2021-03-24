@@ -1,10 +1,10 @@
 ﻿namespace FurnitureTradeDemo.Models
 {
-    public class Discount : DiscountBase
+    public class DiscountService : DiscountServiceBase
     {
         private readonly decimal factor;
 
-        public Discount(decimal factor = 1)
+        public DiscountService(decimal factor = 1)
         {
             this.factor = factor;
         }

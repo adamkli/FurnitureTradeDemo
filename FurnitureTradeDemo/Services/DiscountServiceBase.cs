@@ -2,7 +2,7 @@
 
 namespace FurnitureTradeDemo.Models
 {
-    public abstract class DiscountBase : Entity, IDiscount
+    public abstract class DiscountServiceBase : Entity, IDiscount
     {
         public virtual decimal GetFactor(BasketItem basketItem)
         {

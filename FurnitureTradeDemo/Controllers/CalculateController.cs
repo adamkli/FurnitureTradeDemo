@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 using System.Linq;
 using FurnitureTradeDemo.Data;
+using FurnitureTradeDemo.Services;
 
 namespace FurnitureTradeDemo.Controllers
 {
     [ApiController]
     [Route("api/[action]")]
-    public class CalculateController : ControllerBase
+    public partial class CalculateController : ControllerBase
     {
         private readonly FurnitureTradeContext furnitureTradeContext;
 
@@ -19,11 +20,6 @@ namespace FurnitureTradeDemo.Controllers
         {
             furnitureTradeContext.Database.EnsureCreated();
             this.furnitureTradeContext = furnitureTradeContext;
-        }
-        public class ItemDTO
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
         }
 
         [HttpGet]
@@ -39,20 +35,13 @@ namespace FurnitureTradeDemo.Controllers
             var results = await furnitureTradeContext.Products.ToListAsync();
             return results.Select(el => new ItemDTO() { Id = el.Id, Name = $"{el.Name} [{el.StandardPrice}]" });
         }
-
-        public class CalculationParamsDTO
-        {
-            public int CustomerId { get; set; }
-            public int ProductId { get; set; }
-            public int Quantity { get; set; }
-        }
         [HttpPost]
         public async Task<ActionResult<object>> CalculatePrice([FromBody] CalculationParamsDTO calculationParams)
         {
             var customer = await furnitureTradeContext.Customers.FindAsync(calculationParams.CustomerId);
             var product = await furnitureTradeContext.Products.FindAsync(calculationParams.ProductId);
             BasketItem item = new BasketItem() { Product = product, Quantity = calculationParams.Quantity };
-            return customer.GetDiscount().CalculatePrice(item);
+            return CustomerService.GetDiscount(customer).CalculatePrice(item);
         }
 
     }

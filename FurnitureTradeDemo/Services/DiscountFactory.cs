@@ -1,25 +1,20 @@
-﻿using FurnitureTradeDemo.Data;
-using FurnitureTradeDemo.Models;
+﻿using FurnitureTradeDemo.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FurnitureTradeDemo.Services
 {
-
     public static class DiscountFactory
     {
-        public static IDiscount Create(DiscountType discountAgreementId)
+        public static IDiscount Create(int discountAgreementId)
         {
-            switch (discountAgreementId)
+            switch ((DiscountType)discountAgreementId)
             {
                 case DiscountType.NoDiscount:
-                    return new Discount();
+                    return new DiscountService();
                 case DiscountType.Discount80Percent:
-                    return new Discount(0.8m);
+                    return new DiscountService(0.8m);
                 case DiscountType.VolumeDiscount:
-                    return new VolumeDiscount();
+                    return new VolumeDiscountService();
                 default:
                     throw new NotImplementedException();
             }

@@ -1,8 +1,10 @@
-﻿namespace FurnitureTradeDemo.Models
+﻿using FurnitureTradeDemo.Models;
+
+namespace FurnitureTradeDemo.Services
 {
-    public class VolumeDiscount : DiscountBase
+    public class VolumeDiscountService : DiscountServiceBase
     {
-        public override  decimal GetFactor(BasketItem basketItem)
+        public override decimal GetFactor(BasketItem basketItem)
         {
             var discountFactor = basketItem.Quantity switch
             {
