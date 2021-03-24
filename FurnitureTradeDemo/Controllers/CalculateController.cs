@@ -29,7 +29,7 @@ namespace FurnitureTradeDemo.Controllers
 
             var result = customers
                 .Select(el => new ItemDTO() {        
-                    Id = el.Id, Name = $"{el.Name} [{el.DiscountAgreementId}]" 
+                    Id = el.Id, Name = $"{el.Name} [{(DiscountType)el.DiscountAgreementId}]" 
                 });
 
             return result;
