@@ -1,4 +1,6 @@
-﻿namespace FurnitureTradeDemo.Models
+﻿using FurnitureTradeDemo.Models;
+
+namespace FurnitureTradeDemo.Services
 {
     public interface IDiscount
     {

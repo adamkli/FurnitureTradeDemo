@@ -3,17 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <title>Discount calculator demo</title>
+    <link rel="stylesheet" href="css/site.css"/>
 </head>
 <body>
-    <div>Select Customer</div>
-    <select id="customers" name="customers" multiple>    </select>
-    <div>Select Product</div>
-    <select id="products" name="products" multiple>    </select>
-    <div>Quantity</div>
+    <div>
+        <div class="keepLeft">
+            <div>Select Customer</div>
+            <select id="customers" name="customers" multiple>    </select>
+        </div>
+        <div class="keepLeft">
+            <div>Select Product</div>
+            <select id="products" name="products" multiple>    </select>
+        </div>
+
+    </div>
+    <div style="clear: both">Quantity</div>
     <input type="text" id="quantity" name="quantity" value="1">
     <input type="button" value="Recalculate" onclick="calculate()" />
-    <div>Result:<span id="result"></span></div>
 
+    <div>Result:<span id="result"></span></div>
 
     <script src="js/site.js" asp-append-version="true"></script>
 </body>

@@ -1,8 +1,8 @@
-﻿using FurnitureTradeDemo.Data;
+﻿using FurnitureTradeDemo.Models;
 
-namespace FurnitureTradeDemo.Models
+namespace FurnitureTradeDemo.Services
 {
-    public abstract class DiscountServiceBase : Entity, IDiscount
+    public abstract class DiscountServiceBase : IDiscount
     {
         public virtual decimal GetFactor(BasketItem basketItem)
         {
